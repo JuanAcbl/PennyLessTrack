@@ -1,6 +1,60 @@
 version: 2
 updates:
+  # Acciones usadas en los workflows de .github/workflows/
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+    commit-message:
+      prefix: "ci"
+
+  # Frontend React con pnpm (package.json + pnpm-lock.yaml en frontend/).
+  # Dependabot usa el ecosistema "npm" también para pnpm y detecta el lockfile.
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "deps(frontend)"
+    groups:
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+      minor-y-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Backend Django (requirements.txt o pyproject.toml en backend/)
+  - package-ecosystem: "pip"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "deps(backend)"
+    groups:
+      django:
+        patterns:
+          - "django"
+          - "django-*"
+          - "djangorestframework*"
+      postgres:
+        patterns:
+          - "psycopg*"
+      minor-y-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Imagen de PostgreSQL (docker-compose.yml en la raíz)
+  - package-ecosystem: "docker-compose"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "deps(db)"
