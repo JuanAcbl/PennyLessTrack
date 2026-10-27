@@ -24,13 +24,11 @@ El objetivo principal de PennyLessTrack es ofrecer una herramienta práctica par
 - Visualización gráfica de gastos e ingresos
 - Diseño adaptable para móvil y escritorio
 
-## Tecnologías recomendadas
+## Tecnologías
 
-Este proyecto puede desarrollarse con una stack moderna, por ejemplo:
-
-- Frontend: React, Next.js o Vue
-- Backend: Node.js con Express o Python con FastAPI
-- Base de datos: PostgreSQL, MySQL o SQLite
+- Frontend: React (gestor de paquetes: pnpm)
+- Backend: Python con Django
+- Base de datos: PostgreSQL
 - Autenticación: JWT o sesiones seguras
 - Estilos: Tailwind CSS o Bootstrap
 - Gráficas: Chart.js, Recharts o ApexCharts
@@ -39,12 +37,12 @@ Este proyecto puede desarrollarse con una stack moderna, por ejemplo:
 
 ```bash
 PennyLessTrack/
-├── frontend/         # Interfaz de usuario
-├── backend/          # API y lógica del negocio
-├── database/         # Migraciones y modelos
+├── frontend/         # Interfaz de usuario (React)
+│   └── package.json  # Dependencias del frontend (pnpm)
+├── backend/          # API, lógica de negocio, modelos y migraciones (Django)
+│   └── requirements.txt
 ├── docs/             # Documentación adicional
 ├── README.md         # Documentación principal
-├── package.json      # Configuración del proyecto
 ├── .env.example      # Variables de entorno de ejemplo
 └── .gitignore
 ```
@@ -58,22 +56,31 @@ git clone https://github.com/tu-usuario/PennyLessTrack.git
 cd PennyLessTrack
 ```
 
-2. Instala las dependencias:
-
-```bash
-npm install
-```
-
-3. Crea un archivo de variables de entorno:
+2. Crea un archivo de variables de entorno:
 
 ```bash
 cp .env.example .env
 ```
 
-4. Inicia la aplicación:
+3. Asegúrate de tener PostgreSQL en marcha y una base de datos creada para el proyecto.
+
+4. Backend (Django):
 
 ```bash
-npm run dev
+cd backend
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+5. Frontend (React), en otra terminal:
+
+```bash
+cd frontend
+pnpm install
+pnpm dev
 ```
 
 ## Cómo usar la aplicación

@@ -1,0 +1,64 @@
+# ==========================================
+# Sistema operativo
+# ==========================================
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+
+# ==========================================
+# Editores / IDEs
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ==========================================
+# Frontend (React / pnpm)
+# ==========================================
+node_modules/
+.pnpm-store/
+pnpm-debug.log*
+frontend/build/
+frontend/dist/
+.cache/
+.vite/
+coverage/
+.eslintcache
+
+# ==========================================
+# Backend (Python / Django)
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales
+venv/
+.venv/
+env/
+
+# Ficheros generados por Django
+backend/staticfiles/
+backend/media/
+
+# Empaquetado de Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Tests y cobertura
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# ==========================================
+# Logs
+# ==========================================
+*.log
+logs/
